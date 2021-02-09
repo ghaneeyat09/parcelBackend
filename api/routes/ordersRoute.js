@@ -14,8 +14,7 @@ router.post('/', authorizeUser, (req, res) => {
         pickup: req.body.pickup,
         destination: req.body.destination,
         recName: req.body.recName,
-        recPhoneNo: req.body.recPhoneNo,
-        userPhoneNo: req.body.userPhoneNo
+        recPhoneNo: req.body.recPhoneNo
     });
      order
      .save()
@@ -72,7 +71,6 @@ router.get('/', authorizeUser, (req, res) => {
                     destination: result.destination,
                     recName: result.recName,
                     recPhoneNo: result.recPhoneNo,
-                    userPhoneNo: result.userPhoneNo,
                     status: result.status,
                     presentLoc: result.presentLoc
                 }
