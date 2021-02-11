@@ -42,7 +42,7 @@ router.post('/login', (req, res) => {
 
         else{
             res.status(401).json({
-                    message: "incorrect email/password"
+                    message: "invalid email/password"
                 }) 
             }   
         }
@@ -50,7 +50,7 @@ router.post('/login', (req, res) => {
         })
         .catch((err) => {
             res.status(404).json({
-                message: "an error occured"
+                message: "invalid email/password"
             })
         })
 });
@@ -82,7 +82,7 @@ router.post('/login/admin', (req, res) => {
 
         else{
             res.status(401).json({
-                    message: "incorrect email/password"
+                    message: "invalid email/password"
                 }) 
             }   
         }
@@ -90,7 +90,7 @@ router.post('/login/admin', (req, res) => {
         })
         .catch((err) => {
             res.status(404).json({
-                message: 'an error occured'
+                message: 'invalid email/password'
             })
         })
 });
