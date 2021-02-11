@@ -21,6 +21,10 @@ const orderSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    weight: {
+        type: String,
+        required: true
+    },
     status: {
         type: String,
         default: "ready to pick"

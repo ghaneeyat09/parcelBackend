@@ -42,7 +42,7 @@ router.post('/login', (req, res) => {
 
         else{
             res.status(401).json({
-                    message: "incorrect password"
+                    message: "incorrect email/password"
                 }) 
             }   
         }
@@ -50,25 +50,20 @@ router.post('/login', (req, res) => {
         })
         .catch((err) => {
             res.status(404).json({
-                message: 'user not found'
+                message: "an error occured"
             })
         })
 });
 router.post('/login/admin', (req, res) => {
     Admin.find({email: req.body.email})
     .then((admin) => {
-        if(admin.lenght < 1){
-            res.status(401).json({
-                message: 'admin not found'
-            });
-        }
            bcrypt.compare(req.body.password, admin[0].password, (err, result) => {
-        if(err) {
+           if(err) {
             return res.status(401).json({
                 error: err
                    }) 
                 }
-        if(result) {
+          if(result) {
             console.log(result);
             generateToken(admin[0], (err, token) => {
                 if(err){
@@ -87,7 +82,7 @@ router.post('/login/admin', (req, res) => {
 
         else{
             res.status(401).json({
-                    message: "incorrect password"
+                    message: "incorrect email/password"
                 }) 
             }   
         }
@@ -95,7 +90,7 @@ router.post('/login/admin', (req, res) => {
         })
         .catch((err) => {
             res.status(404).json({
-                message: 'admin not found'
+                message: 'an error occured'
             })
         })
 });
