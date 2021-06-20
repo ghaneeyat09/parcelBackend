@@ -81,7 +81,6 @@ router.post('/register/admin', (req, res) => {
         } else {
           const admin = new Admin({
             firstName: req.body.firstName,
-            userName: req.body.userName,
             email: req.body.email,
             password: hash,
             confirmPassword: hash
