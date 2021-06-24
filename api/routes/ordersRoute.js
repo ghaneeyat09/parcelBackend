@@ -150,9 +150,7 @@ router.patch('/:id', authorizeUser, (req, res) =>{
 //cancel request
 router.patch('/:id/cancel', authorizeUser, (req, res) =>{
     const id = req.params.id;
-    const newData = { $set: {
-        status : "cancelled"
-    }};
+    const newData = req.body;
     Order.update({_id: id}, newData)
     .exec()
     .then((result)=> {
