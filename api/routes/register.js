@@ -1,7 +1,7 @@
 const {generateToken, authorizeUser} = require('../../auth/auth');
 const express = require('express');
 const User = require('../models/userReg');
-const Admin =  require('../models/admin');
+/*const Admin =  require('../models/admin');*/
 const bcrypt = require('bcryptjs');
 const router = express.Router();
 
@@ -63,9 +63,9 @@ router.post('/register', (req, res) => {
               })
             })
         
-          });
+ });
 
-router.post('/register/admin', (req, res) => {
+/*router.post('/register/admin', (req, res) => {
   Admin.find({email: req.body.email})
   .exec()
   .then((admin) => {
@@ -120,6 +120,7 @@ router.post('/register/admin', (req, res) => {
     
      
 });
+*/
 module.exports = router;
                 
                 

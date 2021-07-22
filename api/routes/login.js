@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const User = require('../models/userReg');
-const Admin = require('../models/admin');
+/*const Admin = require('../models/admin');*/
 const { generateToken, authorizeUser } = require('../../auth/auth');
 require("dotenv").config();
 
@@ -54,7 +54,7 @@ router.post('/login', (req, res) => {
             })
         })
 });
-router.post('/login/admin', (req, res) => {
+/*router.post('/login/admin', (req, res) => {
     Admin.find({email: req.body.email})
     .then((admin) => {
            bcrypt.compare(req.body.password, admin[0].password, (err, result) => {
@@ -126,4 +126,5 @@ router.get("/login/:id/admin", authorizeUser, (req, res) => {
         })
     })
 })
+*/
 module.exports = router;

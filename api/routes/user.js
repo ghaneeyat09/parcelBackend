@@ -39,5 +39,23 @@ router.get('/:userId/order', authorizeUser, (req, res) => {
         })
      });
 
-
+router.patch('/:userId/toAdmin',  (req, res) =>{
+        const userId = req.params.userId;
+        newData = req.body
+        User.update({_id: userId}, newData)
+        .exec()
+        .then((result)=> {
+            console.log(result);
+            res.status(200).json({
+                message: 'data patched',
+                updatedData: result
+            })
+        })
+        .catch((err) => {
+            res.status(401).json({
+                message: 'an error occured',
+                error: err
+            })
+        })  
+    });
 module.exports = router;

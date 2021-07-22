@@ -10,7 +10,6 @@ module.exports.generateToken = (user, callback) => {
       {
         firstName: user.firstName,
         lastName: user.lastName,
-        userName: user.userName,
         email: user.email,
         password: user.password,
       },
@@ -23,7 +22,7 @@ module.exports.generateToken = (user, callback) => {
   };
 
   module.exports.authorizeUser = (req, res, next) => {
-    const token = req.headers.authorization ||
+    const token = req.headers.authorization.split(' ')[1] ||
                   req.headers["X-access-token"] ||
                   req.body.token
 
@@ -37,8 +36,10 @@ module.exports.generateToken = (user, callback) => {
            req.user = decoded;
            next();
          }
-          catch{
-            res.status(400).json('invalid token')
+        catch(err){
+            res.status(400).json({
+              error: err
+            })
           }
         
 }
