@@ -22,7 +22,7 @@ module.exports.generateToken = (user, callback) => {
   };
 
   module.exports.authorizeUser = (req, res, next) => {
-    const token = req.headers.authorization.split(' ')[1] ||
+    const token = req.headers.authorization ||
                   req.headers["X-access-token"] ||
                   req.body.token
 

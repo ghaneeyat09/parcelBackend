@@ -54,6 +54,22 @@ router.post('/login', (req, res) => {
             })
         })
 });
+router.get("/login/:id", authorizeUser, (req, res) => {
+    User.findById({_id: req.params.id})
+    .exec()
+    .then((data) => {
+        res.status(200).json({
+            success: true,
+            data
+        })
+    })
+    .catch((err) => {
+        res.json({
+            message: "user not found",
+            error: err
+        })
+    })
+})
 /*router.post('/login/admin', (req, res) => {
     Admin.find({email: req.body.email})
     .then((admin) => {
@@ -94,22 +110,7 @@ router.post('/login', (req, res) => {
             })
         })
 });*/
-router.get("/login/:id", authorizeUser, (req, res) => {
-        User.findById({_id: req.params.id})
-        .exec()
-        .then((data) => {
-            res.status(200).json({
-                success: true,
-                data
-            })
-        })
-        .catch((err) => {
-            res.json({
-                message: "user not found",
-                error: err
-            })
-        })
-})/*
+/*
 router.get("/login/:id/admin", authorizeUser, (req, res) => {
     Admin.findById({_id: req.params.id})
     .exec()
