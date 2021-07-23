@@ -93,7 +93,7 @@ router.post('/login', (req, res) => {
                 message: 'invalid email/password'
             })
         })
-});
+});*/
 router.get("/login/:id", authorizeUser, (req, res) => {
         User.findById({_id: req.params.id})
         .exec()
@@ -109,7 +109,7 @@ router.get("/login/:id", authorizeUser, (req, res) => {
                 error: err
             })
         })
-})
+})/*
 router.get("/login/:id/admin", authorizeUser, (req, res) => {
     Admin.findById({_id: req.params.id})
     .exec()
