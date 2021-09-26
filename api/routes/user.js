@@ -39,7 +39,7 @@ router.get('/:userId/order', authorizeUser, (req, res) => {
         })
      });
 
-router.patch('/:userId/toAdmin',  (req, res) =>{
+/*router.patch('/:userId/toAdmin',  (req, res) =>{
         const userId = req.params.userId;
         newData = req.body
         User.update({_id: userId}, newData)
@@ -57,5 +57,5 @@ router.patch('/:userId/toAdmin',  (req, res) =>{
                 error: err
             })
         })  
-    });
+    });*/
 module.exports = router;
