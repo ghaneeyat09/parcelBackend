@@ -12,7 +12,12 @@ const loginRoutes = require('./api/routes/login');
 const registerRoutes = require('./api/routes/register');
 const ordersRoutes = require('./api/routes/ordersRoute');
 const userRoutes = require('./api/routes/user');
-
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with your frontend's URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+};
 mongoose.connect(process.env.DB_CONNECTION, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true});
 
 mongoose.Promise = global.Promise;
@@ -21,7 +26,8 @@ mongoose.Promise = global.Promise;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(cors());
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 
 
 
